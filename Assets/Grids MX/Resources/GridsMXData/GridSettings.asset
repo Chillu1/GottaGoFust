@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16d47a8569ba4e2cab2a0733e6e8111, type: 3}
+  m_Name: GridSettings
+  m_EditorClassIdentifier: 
+  m_userVersion: 0
+  m_gridWindowLayout: 1
+  m_showDataManagementOptions: 1
+  m_showScrollBars: 0
+  m_showGlobalSnappingOptions: 1
+  m_showXAxisOptions: 1
+  m_showYAxisOptions: 1
+  m_showZAxisOptions: 1
+  m_showGridMovementOptions: 1
+  m_showGridFollowOptions: 1
+  m_xAxisColor: {r: 0.859, g: 0.243, b: 0.114, a: 0.25}
+  m_yAxisColor: {r: 0.604, g: 0.953, b: 0.242, a: 0.25}
+  m_zAxisColor: {r: 0.227, g: 0.478, b: 0.973, a: 0.25}
+  m_unfocusedStyle: 0
+  m_unfocusedColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.25}
+  m_majorLineSpacing: 10
+  m_majorLineOpacity: 0.5
+  m_measurementUnit: 0
+  m_coordinateDisplay: 0
+  m_coordinateAnchor: 7
+  m_coordinateColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_coordinateSize: 15
+  m_useAxisColorForComponents: 1
+  m_planeReferenceDisplay: 1
+  m_planeReferenceStyle: 0
+  m_planeReferenceColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  m_axisReferenceDisplay: 1
+  m_axisReferenceStyle: 1
+  m_axisReferenceColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}

@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce8b5031b9724dab85750f064b72b96, type: 3}
+  m_Name: Keybindings
+  m_EditorClassIdentifier: 
+  m_keybindings:
+  - label: Toggle Visibility
+    enabled: 1
+    control: 1
+    alt: 0
+    shift: 1
+    key: 113
+    id: visibility_toggle
+  - label: Toggle Position Snap
+    enabled: 1
+    control: 1
+    alt: 0
+    shift: 1
+    key: 119
+    id: position_enabled
+  - label: Toggle Rotation Snap
+    enabled: 1
+    control: 1
+    alt: 0
+    shift: 1
+    key: 101
+    id: rotation_enabled
+  - label: Move to Selected
+    enabled: 1
+    control: 1
+    alt: 0
+    shift: 0
+    key: 116
+    id: move_to_selected
+  - label: Rotate to Selected
+    enabled: 1
+    control: 1
+    alt: 0
+    shift: 0
+    key: 103
+    id: rotate_to_selected
+  - label: Follow Position
+    enabled: 1
+    control: 1
+    alt: 0
+    shift: 1
+    key: 116
+    id: follow_position
+  - label: Follow Rotation
+    enabled: 1
+    control: 1
+    alt: 0
+    shift: 1
+    key: 103
+    id: follow_rotation

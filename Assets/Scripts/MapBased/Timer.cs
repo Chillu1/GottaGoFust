@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
+﻿using UnityEngine;
 
 using UnityEngine.SceneManagement;
 
-public class Timer : MonoBehaviour {
-
+public class Timer : MonoBehaviour
+{
     //Make it so it pauses when U press ESC?
     //Splits
 
@@ -26,9 +23,10 @@ public class Timer : MonoBehaviour {
 
     public bool itsNight = false;//So text is white instead of black
 
-    CollisionDetector collisionDetector;
+    private CollisionDetector collisionDetector;
 
-    void Start() {
+    private void Start()
+    {
         //time doesnt = time, so it basically resets
         time = 0;
         timePerMap = GlobalControl.Instance.timePerMap;
@@ -39,32 +37,29 @@ public class Timer : MonoBehaviour {
         highScores = new float[GlobalControl.Instance.timePerMap.Length];//AmountOfMaps
         highScores = GlobalControl.Instance.timePerMap;//Works
 
-        for(int i = 0; i < highScores.Length; i++)
+        for (int i = 0; i < highScores.Length; i++)
         {
-            if(highScoreThisMap > highScores[i] && highScores[i] != 0)
+            if (highScoreThisMap > highScores[i] && highScores[i] != 0)
             {
                 highScoreThisMap = highScores[i];
             }
-                
         }
 
         collisionDetector = GetComponentInChildren<CollisionDetector>();
     }
 
-
-    void Update() {
-        
-        if(collisionDetector.started == false)
+    private void Update()
+    {
+        if (collisionDetector.started == false)
         {
             time = 0;
         }
-
         else
-        time += Time.deltaTime;
+            time += Time.deltaTime;
 
         ChangeTextColor();
 
-        //On load map: timePerMap[currentMap] = time; currentMap += 1; 
+        //On load map: timePerMap[currentMap] = time; currentMap += 1;
         if (Input.GetKeyDown(KeyCode.M))//TODO Only for testing, make dev mode?
         {
             timePerMap[currentMap] = time;
@@ -78,11 +73,8 @@ public class Timer : MonoBehaviour {
         highScore.text = "Highscore: " + highScoreThisMap.ToString("F2");//Displays 2 decimals
         mapName.text = GlobalControl.Instance.currentMapName;
 
-
         velocityText.text = "Velocity: " + GetComponent<MovementPlayer>().velocity.ToString("F2");//Displays magnitude velocity, //Round it to 1-2 decimals
-        //velocityText.text = GetComponent<Movement>().velocity.ToString("F2");//CHANGE
-
-        
+                                                                                                  //velocityText.text = GetComponent<Movement>().velocity.ToString("F2");//CHANGE
     }
 
     public void SaveData()
@@ -91,16 +83,16 @@ public class Timer : MonoBehaviour {
         GlobalControl.Instance.timePerMap = timePerMap;
         GlobalControl.Instance.currentMap = currentMap;
     }
-   
-    void ChangeTextColor()
+
+    private void ChangeTextColor()
     {
-        if(itsNight){
+        if (itsNight)
+        {
             mapName.color = Color.white;
             timer.color = Color.white;
             highScore.color = Color.white;
             velocityText.color = Color.white;
         }
-        
         else if (!itsNight)
         {
             mapName.color = Color.black;
@@ -108,12 +100,8 @@ public class Timer : MonoBehaviour {
             highScore.color = Color.black;
             velocityText.color = Color.black;
         }
-
     }
 
     //If hit finish/loading new map stop timer/split
     //Prob when loading starts
-    
-
 }
-

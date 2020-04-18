@@ -1,7 +1,5 @@
 ﻿//TODO when you hit a wall that is more than 60 degrees up any rotation, U reck Ur speed/half ur speed?
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 // Contains the command the user wishes upon the character

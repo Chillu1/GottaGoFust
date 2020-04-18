@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-
-public class DefineObject : MonoBehaviour { 
-
+public class DefineObject : MonoBehaviour
+{
     public bool isWall;
 
     public bool isGround;
@@ -15,6 +12,7 @@ public class DefineObject : MonoBehaviour {
 
     //What kinda of trigger, String?
     public object Object;
+
     public string function;//? //If function = X editor add rot/speed or some shit
     public string test;
 
@@ -24,9 +22,9 @@ public class DefineObject : MonoBehaviour {
     //Trigger
     public GameObject mainObject;
 
-    Vector3 originalPosition;
-    Vector3 originalRotation;
-    Vector3 originalScale;
+    private Vector3 originalPosition;
+    private Vector3 originalRotation;
+    private Vector3 originalScale;
 
     public float rotation;
 
@@ -45,7 +43,7 @@ public class DefineObject : MonoBehaviour {
 
     public bool activated;
 
-    float framesPassed = 0;
+    private float framesPassed = 0;
 
     /* static void Init()
      {
@@ -53,13 +51,11 @@ public class DefineObject : MonoBehaviour {
          window.Show();
      }*/
 
+    private void Start()
+    {
+    }
 
-    void Start () {
-		
-	}
-	
-	
-	void Update () {
-		
-	}
+    private void Update()
+    {
+    }
 }

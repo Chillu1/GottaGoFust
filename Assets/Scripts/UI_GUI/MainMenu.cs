@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour {
-
+public class MainMenu : MonoBehaviour
+{
     //For now
     //0 = MainMenu
     //1 = CityPrototype
@@ -15,9 +13,9 @@ public class MainMenu : MonoBehaviour {
     //5 = First Tutorial Eddo
     //6 = Huge Testing Map
 
-
     //Buttons
     public GameObject play;
+
     public GameObject settings;//Button
     public GameObject exit;
 
@@ -27,9 +25,9 @@ public class MainMenu : MonoBehaviour {
     public GameObject options;//Main Object
 
     public GameObject back;
-	
 
-	void Start () {
+    private void Start()
+    {
         play.SetActive(true);
         settings.SetActive(true);
         exit.SetActive(true);
@@ -39,13 +37,11 @@ public class MainMenu : MonoBehaviour {
         options.SetActive(false);
 
         back.SetActive(false);
-	}
-	
-	
-	void Update () {
-		
-	}
+    }
 
+    private void Update()
+    {
+    }
 
     public void PlayOpenMaps()
     {
@@ -65,7 +61,6 @@ public class MainMenu : MonoBehaviour {
         Opening();
     }
 
-
     public void Back()
     {
         if (maps.activeInHierarchy)//If play is pressed and maps are opened
@@ -73,11 +68,9 @@ public class MainMenu : MonoBehaviour {
             OpenMainMenu();
 
             maps.SetActive(false);
-            
 
             Closing();
         }
-
         else if (options.activeInHierarchy)
         {
             OpenMainMenu();
@@ -86,7 +79,6 @@ public class MainMenu : MonoBehaviour {
 
             Closing();
         }
-
     }
 
     //0 = MainMenu
@@ -157,36 +149,29 @@ public class MainMenu : MonoBehaviour {
         SceneManager.LoadScene(12);
     }
 
-
     public void Quit()
     {
-
 #if UNITY_STANDALONE//REMEMBER Check if it works with mac/linux and others
 
         Application.Quit();
 
-        
 #endif
 
 #if UNITY_EDITOR
 
         UnityEditor.EditorApplication.isPlaying = false;
 
-
 #endif
-
     }
 
     public void Opening()
     {
         back.SetActive(true);
-
     }
 
     public void Closing()
     {
         back.SetActive(false);
-
     }
 
     public void OpenMainMenu()
@@ -202,5 +187,4 @@ public class MainMenu : MonoBehaviour {
         settings.SetActive(false);
         exit.SetActive(false);
     }
-
 }

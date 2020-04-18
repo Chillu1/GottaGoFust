@@ -1,23 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
-
 using UnityEngine.SceneManagement;
 
-using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
 //using System.Linq;
 
-public class GlobalControl : MonoBehaviour {
-
+public class GlobalControl : MonoBehaviour
+{
     public static GlobalControl Instance;
 
     public MouseMovement mouseMovement;
 
     public float time;
     public string[] mapNames = new string[20];//First everything, then extract times. New string for each line
+
     //public string[] numberMapNames = new string[20];//Only numbers no map name
     public float[] timePerMap = new float[20];
+
     public string currentMapName;
     public int currentMap;
 
@@ -26,15 +25,14 @@ public class GlobalControl : MonoBehaviour {
 
     public TextAsset textAsset;
 
-    void Awake()
+    private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             DontDestroyOnLoad(gameObject);
             Instance = this;
         }
-
-        else if(Instance != this)
+        else if (Instance != this)
         {
             Destroy(gameObject);
         }
@@ -42,16 +40,16 @@ public class GlobalControl : MonoBehaviour {
         currentMapName = SceneManager.GetActiveScene().name;
     }
 
-    void Start () {
-
+    private void Start()
+    {
         //Debug.Log(ReadString());
         //mapNames = ReadString().Split(ReadString(), "\r\n?|\n");
         //textAsset = Resources.Load("test", typeof(TextAsset)) as TextAsset;//Doesnt work as supposed 2
-        
+
         mapNames = textAsset.text.Split('\n');
         timePerMap = new float[mapNames.Length];
 
-        if(mouseMovement.sensitivityX != mouseMovement.sensitivityY)
+        if (mouseMovement.sensitivityX != mouseMovement.sensitivityY)
         {
             Debug.LogError("Global Control: Different sensivities somehow");
         }
@@ -60,7 +58,7 @@ public class GlobalControl : MonoBehaviour {
         mouseMovement.sensitivityX = sensivity;
         mouseMovement.sensitivityY = sensivity;
 
-        for(int i = 0; i < mapNames.Length; i++)
+        for (int i = 0; i < mapNames.Length; i++)
         {
             //timePerMap[i] = float.Parse("123");//Works
             //numberMapNames[i] = mapNames[i].Replace("FirstTutorial time: ", "");
@@ -69,7 +67,7 @@ public class GlobalControl : MonoBehaviour {
             float parseOut;
 
             //timePerMap[i] = float.TryParse(mapNames[i].Replace(currentMapName, ""), out parseOut);
-            if(float.TryParse(mapNames[i].Replace(currentMapName + " time: ", ""), out parseOut))//Parses out first but not second
+            if (float.TryParse(mapNames[i].Replace(currentMapName + " time: ", ""), out parseOut))//Parses out first but not second
             {
                 //Gouchi
                 // Debug.Log("Parse Out: " + parseOut);
@@ -88,38 +86,33 @@ public class GlobalControl : MonoBehaviour {
             //currentMapName = currentMapName.Remove(14);//Hard coded/Buggy with new setup
 
             mapNames[i] = mapNames[i].Replace(" time: ", "");
-            mapNames[i] = mapNames[i].Remove(currentMapName.Length+2);
+            mapNames[i] = mapNames[i].Remove(currentMapName.Length + 2);
 
-            if(mapNames[i] != currentMapName)
+            if (mapNames[i] != currentMapName)
             {
                 //mapNames[i].Remove(0);//Remove whole name?
             }
-            
-
         }
         //Check if name of current map is the same as highscore map, then display the highscore
 
         //currentMapName = mapNames[1];
     }
-	
-	
-	void Update () {
 
+    private void Update()
+    {
         //if(mouseMovement.sensitivityX != sensivity)
         //{
-            ChangeInSensivity();
+        ChangeInSensivity();
         //}
 
         currentMapName = SceneManager.GetActiveScene().name;
+    }
 
-	}
-
-    void ChangeInSensivity()//TODO Sensivity to settings afterwards?
+    private void ChangeInSensivity()//TODO Sensivity to settings afterwards?
     {
         //sensivity = mouseMovement.sensitivityX;//Neither works
         mouseMovement.sensitivityX = sensivity;
         mouseMovement.sensitivityY = sensivity;
-
     }
 
     public static List<Data> savedData = new List<Data>();
@@ -133,26 +126,20 @@ public class GlobalControl : MonoBehaviour {
         //Write some shit in there
         writer.WriteLine(mapName + " time: " + time);//Works
         writer.Close();
-        
 
         //TextAsset asset = Resources.Load("test");
-
-
     }
 
     public static string ReadString()
     {
         string path = "Assets/Resources/test.txt";
 
-        
         StreamReader reader = new StreamReader(path);
         //Debug.Log(reader.ReadToEnd());
-
 
         return reader.ReadToEnd();
 
         reader.Close();//TODO , idk honestly
-
 
         //return reader.ReadToEnd();//Reads out first, then closes, I think
     }
@@ -167,7 +154,6 @@ public class GlobalControl : MonoBehaviour {
         writer.WriteLine("Sensivity: " + sensivity);
 
         writer.Close();
-
     }
 
     public static string ReadSensivity()
@@ -179,7 +165,5 @@ public class GlobalControl : MonoBehaviour {
         return reader.ReadToEnd();
 
         reader.Close();
-
     }
-
 }

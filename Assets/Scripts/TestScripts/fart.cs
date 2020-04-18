@@ -1,21 +1,21 @@
 ﻿using UnityEngine;
-using UnityEditor;
 
-public class fart : MonoBehaviour {
+public class fart : MonoBehaviour
+{
+    public GameObject go;
+    public float speed = 300f;
+    public Rigidbody rb;
 
-	public GameObject go;
-	public float speed = 300f;
-	public Rigidbody rb;
+    private float timer;
 
-	private float timer;
+    private void Update()
+    {
+        timer += Time.deltaTime;
 
-	void Update () {
-		timer += Time.deltaTime;
-
-		if (timer >= 1) {
-			rb.AddForce (transform.forward * speed);
-			timer = 0;
-		}
-
-	}
+        if (timer >= 1)
+        {
+            rb.AddForce(transform.forward * speed);
+            timer = 0;
+        }
+    }
 }

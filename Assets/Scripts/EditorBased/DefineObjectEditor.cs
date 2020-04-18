@@ -1,19 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEditor;
 using UnityEngine;
-
-using UnityEditor;
 
 #if UNITY_EDITOR
 
 [CustomEditor(typeof(DefineObject))]
-public class DefineObjectEditor : Editor {
-
+public class DefineObjectEditor : Editor
+{
     private bool isTrigger = false;
     private DefineObject defineObject = null;
 
-    private string[] functions = new[] { "Move", "Rotate", "Activate", "Deactivate"};
-    int choiceIndex = 0;
+    private string[] functions = new[] { "Move", "Rotate", "Activate", "Deactivate" };
+    private int choiceIndex = 0;
 
     private void OnEnable()
     {
@@ -32,7 +29,6 @@ public class DefineObjectEditor : Editor {
 
         if (isTrigger)
         {
-            
             GUILayout.BeginHorizontal();
             //GUILayout.Label("Function", GUILayout.Width(145));
             //defineObject.function = EditorGUILayout.TextField(defineObject.function);//Text
@@ -60,7 +56,6 @@ public class DefineObjectEditor : Editor {
                     GUILayout.BeginHorizontal();
                     GUILayout.EndHorizontal();
                 }
-
             }
 
             GUILayout.BeginHorizontal();
@@ -85,8 +80,7 @@ public class DefineObjectEditor : Editor {
         base.OnInspectorGUI();
     }
 
-
-    void ActivateSpeed()
+    private void ActivateSpeed()
     {
         GUILayout.BeginHorizontal();
         GUILayout.Label("Speed", GUILayout.Width(145));
@@ -95,11 +89,9 @@ public class DefineObjectEditor : Editor {
         GUILayout.EndHorizontal();
     }
 
-    void ActivateLength()
+    private void ActivateLength()
     {
-
     }
-
 }
 
 #endif

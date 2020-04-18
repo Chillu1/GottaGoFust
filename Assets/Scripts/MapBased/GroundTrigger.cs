@@ -1,38 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class GroundTrigger : MonoBehaviour {
+public class GroundTrigger : MonoBehaviour
+{
+    private void Start()
+    {
+    }
 
-	
-
-
-	void Start () {
-		
-	}
-	
-	
-	void Update () {
-	    	
-	}
-
+    private void Update()
+    {
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Ground")
+        if (other.tag == "Ground")
         {
             //Movement.inAir = false;
         }
-
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag == "Ground")
+        if (other.tag == "Ground")
         {
-          //  Movement.inAir = true;
+            //  Movement.inAir = true;
         }
-
     }
-
 }

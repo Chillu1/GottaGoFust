@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 using UnityEngine.SceneManagement;
 
-public class EscMenu : MonoBehaviour {
-
+public class EscMenu : MonoBehaviour
+{
     public static EscMenu instance;
 
     public bool paused = false;
@@ -20,8 +18,9 @@ public class EscMenu : MonoBehaviour {
     public GameObject settings;
 
     public GameObject back;
-	
-	void Start () {
+
+    private void Start()
+    {
         if (SceneManager.GetActiveScene().name != "MainMenu" || SceneManager.GetActiveScene().buildIndex == 0)//0 Should be main menu //Or any other UI based scene
         {
             Cursor.lockState = CursorLockMode.Locked;//REMEMBER Closes cursor on middle of the screen //Esc recks it
@@ -32,50 +31,30 @@ public class EscMenu : MonoBehaviour {
 
         settings.SetActive(false);
         back.SetActive(false);
-	}
-	
-	
-	void Update () {
+    }
 
+    private void Update()
+    {
         if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name != "MainMenu" || Input.GetKeyDown(KeyCode.P) && SceneManager.GetActiveScene().name != "MainMenu")//Or any other UI based scene
         {
-
             if (settings.activeInHierarchy)
             {
                 Back();
-
             }
-
             else if (CheckForPause())
             {
-                
-
-
                 Closing();
-
-                
             }
-
             else if (!CheckForPause())
             {
-                
-
-
                 Opening();
-
-                
             }
-
         }
-        
-        
-	}
+    }
 
     public void ResumeGame()
     {
         Closing();
-        
-
     }
 
     public void OpenSettings()
@@ -91,7 +70,7 @@ public class EscMenu : MonoBehaviour {
     {
         SceneManager.LoadScene(0);//MainMenu //Not Baked Panel
     }
-    
+
     public void Opening()
     {
         Time.timeScale = 0;
@@ -126,22 +105,19 @@ public class EscMenu : MonoBehaviour {
 
     public void Back()
     {
-
         if (settings.activeInHierarchy)//Settings are active
         {
             settings.SetActive(false);
             Opening();
         }
-
     }
 
-    bool CheckForPause()
+    private bool CheckForPause()
     {
-        if(paused)
+        if (paused)
         {
             return true;
         }
-
         else if (!paused)
         {
             return false;
@@ -150,5 +126,4 @@ public class EscMenu : MonoBehaviour {
         Debug.LogError("Error: EscMenu");
         return false;//Error
     }
-
 }

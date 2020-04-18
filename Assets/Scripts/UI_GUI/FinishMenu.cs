@@ -1,14 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 using UnityEngine.SceneManagement;
 
-public class FinishMenu : MonoBehaviour {
+public class FinishMenu : MonoBehaviour
+{
+    private GameObject player;
 
-    GameObject player;
-
-    CollisionDetector collisionDetector;
+    private CollisionDetector collisionDetector;
 
     public bool finished = false;
 
@@ -21,9 +19,10 @@ public class FinishMenu : MonoBehaviour {
     public UnityEngine.UI.Text time;
     public UnityEngine.UI.Text highscore;
 
-    bool somethingIsOpened = false;
+    private bool somethingIsOpened = false;
 
-	void Start () {
+    private void Start()
+    {
         finishMenu.SetActive(false);
 
         player = GameObject.FindGameObjectWithTag("Player").gameObject;//REMEMBER
@@ -35,11 +34,10 @@ public class FinishMenu : MonoBehaviour {
         Time.timeScale = 1;
 
         finished = false;
-	}
-	
-	
-	void Update () {
+    }
 
+    private void Update()
+    {
         if (IsFinished() && !somethingIsOpened)//Finished map
         {
             Time.timeScale = 0;//Stops time
@@ -53,12 +51,10 @@ public class FinishMenu : MonoBehaviour {
             {
                 RestartMap();
             }
-
             else if (Input.GetKeyDown(KeyCode.S))
             {
                 Stats();
             }
-
         }
         else if (!IsFinished())
         {
@@ -66,15 +62,14 @@ public class FinishMenu : MonoBehaviour {
         }
 
         //GameObject.FindGameObjectWithTag("Player").GetComponent<Timer>().
-        time.text = ""+Timer.time;//23.68/works
+        time.text = "" + Timer.time;//23.68/works
         if (player.GetComponent<Timer>().highScoreThisMap < Timer.time)//TODO Looks like it works properly, not 100% sure tho
         {
             highscore.text = "" + player.GetComponent<Timer>().highScore.text;//TODO Works now, but isn't update right away cuz of the file save? (If U get a new highscore)
         }
         else
             highscore.text = "" + Timer.time;
-
-	}
+    }
 
     public void RestartMap()
     {
@@ -87,7 +82,6 @@ public class FinishMenu : MonoBehaviour {
         Time.timeScale = 1;
 
         //TODO Prob could just reset time and position
-
     }
 
     public void Stats()
@@ -99,7 +93,6 @@ public class FinishMenu : MonoBehaviour {
 
         back.SetActive(true);
         somethingIsOpened = true;
-
     }
 
     public void Back()
@@ -111,7 +104,6 @@ public class FinishMenu : MonoBehaviour {
             back.SetActive(false);
         }
 
-
         somethingIsOpened = false;
     }
 
@@ -120,7 +112,7 @@ public class FinishMenu : MonoBehaviour {
         SceneManager.LoadScene(0);
     }
 
-    bool IsFinished()
+    private bool IsFinished()
     {
         if (finished)
         {
@@ -134,5 +126,4 @@ public class FinishMenu : MonoBehaviour {
         Debug.LogError("FinishMenu Error");
         return false;
     }
-
 }

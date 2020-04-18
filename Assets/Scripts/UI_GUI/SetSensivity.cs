@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-
-public class SetSensivity : MonoBehaviour {
-
+public class SetSensivity : MonoBehaviour
+{
     public MouseMovement mouseMovement;
 
     public GlobalControl globalControl;
@@ -16,24 +13,19 @@ public class SetSensivity : MonoBehaviour {
 
     public Slider slider;
 
-	void Start () {
-
+    private void Start()
+    {
         globalControl = GameObject.Find("Global Control").GetComponent<GlobalControl>();//REMEMBER Find
-       // mouseMovement.sensitivityX = globalControl.sensivity;
-       // mouseMovement.sensitivityY = globalControl.sensivity;
-
+                                                                                        // mouseMovement.sensitivityX = globalControl.sensivity;
+                                                                                        // mouseMovement.sensitivityY = globalControl.sensivity;
     }
-	
-	
-	void Update () {
-		
-	}
 
-
+    private void Update()
+    {
+    }
 
     public void SetSensitivityFunction()
     {
-        
         //inputField.onEndEdit.AddListener("asd");
 
         mouseMovement.sensitivityX = float.Parse(inputField.text);
@@ -43,7 +35,6 @@ public class SetSensivity : MonoBehaviour {
         {
             globalControl.sensivity = float.Parse(inputField.text);
         }
-
         catch (System.Exception e)
         {
             Debug.LogException(e, this);
@@ -51,12 +42,10 @@ public class SetSensivity : MonoBehaviour {
         }
 
         SaveSensivity();
-
     }
 
     public void SetSensitivityFunctionSlider()
     {
-
         mouseMovement.sensitivityX = slider.value;
         mouseMovement.sensitivityY = slider.value;
 
@@ -64,21 +53,17 @@ public class SetSensivity : MonoBehaviour {
         {
             globalControl.sensivity = slider.value;
         }
-        
-        catch(System.Exception e)
+        catch (System.Exception e)
         {
             Debug.LogException(e, this);
             globalControl = GameObject.Find("Global Control").GetComponent<GlobalControl>();
         }
 
         SaveSensivity();
-
     }
 
     public void SaveSensivity()
     {
-        
         GlobalControl.WriteSensivity(globalControl.sensivity);
     }
-
 }

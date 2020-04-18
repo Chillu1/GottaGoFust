@@ -2,6 +2,7 @@
 Bunny hop speedrun game
 
 [old Discord server](https://discordapp.com/invite/UQ9Ka7u)
+[itch.io link](https://chillu.itch.io/gottagofust)
 
 ## Disclaimer
 Most of this projet is licensed under MIT. But some assets have their own license.

@@ -139,3 +139,4 @@ EddoIndoorsMap time: 0
 EddoRoofTops time: 113.9224
 EddoIndoorsMap time: 21.39515
 EddoIndoorsMap time: 72.44827
+FirstTutorial time: 16.80106

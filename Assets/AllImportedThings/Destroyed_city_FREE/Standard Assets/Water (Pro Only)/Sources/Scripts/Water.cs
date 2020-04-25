@@ -3,7 +3,7 @@ using System.Collections;
 
 
 [ExecuteInEditMode] // Make water live-update even when not in play mode
-public class Water : MonoBehaviour
+public class WaterS : MonoBehaviour
 {
 	public enum WaterMode {
 		Simple = 0,

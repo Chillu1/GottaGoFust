@@ -2175,7 +2175,7 @@ namespace AssetUsageDetectorNamespace
 							continue;
 						else if( ( propertyName.Equals( "material" ) || propertyName.Equals( "materials" ) ) &&
 							( typeof( Renderer ).IsAssignableFrom( currType ) || typeof( Collider ).IsAssignableFrom( currType ) ||
-							typeof( Collider2D ).IsAssignableFrom( currType ) || typeof( GUIText ).IsAssignableFrom( currType ) ) )
+							typeof( Collider2D ).IsAssignableFrom( currType ) || typeof( UnityEngine.UI.Text ).IsAssignableFrom( currType ) ) )
 							continue;
 						else
 						{

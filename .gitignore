@@ -274,7 +274,6 @@ paket-files/
 __pycache__/
 *.pyc
 /Library
-/TDSurvival.sln
 /Assembly-CSharp.csproj
 /Assembly-CSharp-Editor.csproj
 /Assembly-CSharp-Editor-firstpass.csproj
@@ -282,3 +281,4 @@ __pycache__/
 /Assets/Plugins/GitHub.meta
 
 # Custom
+*.sln
